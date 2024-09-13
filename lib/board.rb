@@ -7,9 +7,9 @@ class Board
 
   def display_board
     puts "\nTIC TAC TOE \n \n"
-    @board.each do |row|
+    @board.each_with_index do |row, index|
       puts row.join(' ')
-      puts '---|---|---'
+      puts '---|---|---' unless index == 2
     end
     puts "\nTIC TAC TOE \n \n"
   end
