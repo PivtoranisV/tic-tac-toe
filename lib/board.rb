@@ -21,4 +21,8 @@ class Board
       end
     end
   end
+
+  def tie_game
+    @board.none? { |options| options.to_s.match?(/[1-9]/) }
+  end
 end
