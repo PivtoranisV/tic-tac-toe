@@ -13,4 +13,12 @@ class Board
     end
     puts "\nTIC TAC TOE \n \n"
   end
+
+  def update_board(player_marker, player_choice)
+    @board.map! do |row|
+      row.map do |option|
+        option.include?(player_choice) ? option.sub(/[1-9]/, player_marker) : option
+      end
+    end
+  end
 end
