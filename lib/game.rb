@@ -2,17 +2,18 @@
 
 require_relative 'board'
 require_relative 'playeer'
+require 'colorize'
 
 class Game
-  puts 'Hi everyone, welcome to the TIC TAC TOE game'
-  puts 'Player 1, please enter your name'
+  puts 'Hi everyone, welcome to the TIC TAC TOE game'.colorize(:yellow)
+  puts 'Player 1, please enter your name'.colorize(:green)
   player1_name = gets.chomp
-  puts "Hi #{player1_name}, your marker will be - X"
-  puts 'Player 2, please enter your name'
+  puts "Hi #{player1_name}, your marker will be - X".colorize(:blue)
+  puts 'Player 2, please enter your name'.colorize(:green)
   player2_name = gets.chomp
-  puts "Hi #{player2_name}, your marker will be - O"
+  puts "Hi #{player2_name}, your marker will be - O".colorize(:blue)
   puts "#{player1_name} and #{player2_name}, please check bellow the starting game board,
-  each number can be replayced with your marker"
+  each number can be replayced with your marker".colorize(:green)
 
   # Initialize the board and display it
   game_board = Board.new([[' 1', '| 2', '| 3'], [' 4', '| 5', '| 6'], [' 7', '| 8', '| 9']])
@@ -43,8 +44,8 @@ class Game
   end
 
   if winner_marker
-    puts "#{winner_name} wins! Congratulations"
+    puts "#{winner_name} wins! Congratulations".colorize(:blue)
   else
-    puts "It's a tie!"
+    puts "It's a tie!".colorize(:yellow)
   end
 end

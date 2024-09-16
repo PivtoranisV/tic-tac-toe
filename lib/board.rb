@@ -1,17 +1,19 @@
 # frozen_string_literal: true
 
+require 'colorize'
+
 class Board
   def initialize(board)
     @board = board
   end
 
   def display_board
-    puts "\nTIC TAC TOE \n \n"
+    puts "\nTIC TAC TOE \n".colorize(:yellow)
     @board.each_with_index do |row, index|
       puts row.join(' ')
       puts '---|---|---' unless index == 2
     end
-    puts "\nTIC TAC TOE \n \n"
+    puts "\n \n"
   end
 
   def update_board(player_marker, player_choice)
