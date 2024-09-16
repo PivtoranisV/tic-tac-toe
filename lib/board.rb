@@ -33,23 +33,23 @@ class Board
   end
 
   def check_winner
-    # Check rows for a winner
-    @board.each do |row|
-      return row[0].strip if row.join.strip.gsub('|', '').split.uniq.join.length == 1
+    clean_board = @board.map do |row|
+      row.map { |cell| cell.sub('|', '').strip }
     end
-    # Check columns for a winner
-    (0..2).each do |col|
-      column = [@board[0][col].gsub('|', '').strip, @board[1][col].gsub('|', '').strip,
-                @board[2][col].gsub('|', '').strip]
-      return column[0] if column.uniq.length == 1
+    winning_combination = [
+      # Rows
+      clean_board[0], clean_board[1], clean_board[2],
+      # Columns
+      [clean_board[0][0], clean_board[1][0], clean_board[2][0]],
+      [clean_board[0][1], clean_board[1][1], clean_board[2][1]],
+      [clean_board[0][2], clean_board[1][2], clean_board[2][2]],
+      # Diagonals
+      [clean_board[0][0], clean_board[1][1], clean_board[2][2]],
+      [clean_board[0][2], clean_board[1][1], clean_board[2][0]]
+    ]
+    winning_combination.each do |combo|
+      return combo[0] if combo.uniq.size == 1
     end
-    # Check diagonals for a winner
-    diagonal1 = [@board[0][0].gsub('|', '').strip, @board[1][1].gsub('|', '').strip, @board[2][2].gsub('|', '').strip]
-    diagonal2 = [@board[0][2].gsub('|', '').strip, @board[1][1].gsub('|', '').strip, @board[2][0].gsub('|', '').strip]
-
-    return diagonal1[0] if diagonal1.uniq.length == 1
-    return diagonal2[0] if diagonal2.uniq.length == 1
-
     # No winner found
     nil
   end

@@ -15,9 +15,15 @@ class Player
     loop do
       input = gets.chomp
 
-      return input if input.match?(/^[1-9]$/) && !game_board.cell_occupied?(input)
+      return input if valid_move?(input, game_board)
 
       puts 'Invalid move. Either the input is not a number between 1-9 or the cell is already occupied.'.colorize(:red)
     end
+  end
+
+  private
+
+  def valid_move?(input, game_board)
+    input.match?(/^[1-9]$/) && !game_board.cell_occupied?(input)
   end
 end
