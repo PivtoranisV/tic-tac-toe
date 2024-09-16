@@ -22,6 +22,10 @@ class Board
     end
   end
 
+  def cell_occupied?(player_choice)
+    @board.flatten.none? { |option| option.include?(player_choice) }
+  end
+
   def tie_game?
     @board.none? { |options| options.to_s.match?(/[1-9]/) }
   end

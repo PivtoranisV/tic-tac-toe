@@ -23,12 +23,12 @@ class Game
   player2 = Player.new(player2_name, 'O')
 
   loop do
-    player1_choice = player1.make_move
+    player1_choice = player1.make_move(game_board)
     game_board.update_board(player1.marker, player1_choice)
     game_board.display_board
     break if game_board.tie_game? || game_board.check_winner
 
-    player2_choice = player2.make_move
+    player2_choice = player2.make_move(game_board)
     game_board.update_board(player2.marker, player2_choice)
     game_board.display_board
     break if game_board.tie_game? || game_board.check_winner

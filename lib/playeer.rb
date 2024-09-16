@@ -8,15 +8,15 @@ class Player
     @marker = marker
   end
 
-  def make_move
+  def make_move(game_board)
     puts "#{name}, please choose where you want to place your marker (#{marker})"
     puts 'Please enter a number from 1 to 9 to identify your option:'
     loop do
       input = gets.chomp
 
-      return input if input.match?(/^[1-9]$/)
+      return input if input.match?(/^[1-9]$/) && !game_board.cell_occupied?(input)
 
-      puts 'Invalid input. Please enter a number between 1 and 9.'
+      puts 'Invalid move. Either the input is not a number between 1-9 or the cell is already occupied.'
     end
   end
 end
