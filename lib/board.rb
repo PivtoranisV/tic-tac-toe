@@ -25,4 +25,26 @@ class Board
   def tie_game?
     @board.none? { |options| options.to_s.match?(/[1-9]/) }
   end
+
+  def check_winner
+    # Check rows for a winner
+    @board.each do |row|
+      return row[0].strip if row.join.strip.gsub('|', '').split.uniq.join.length == 1
+    end
+    # Check columns for a winner
+    (0..2).each do |col|
+      column = [@board[0][col].gsub('|', '').strip, @board[1][col].gsub('|', '').strip,
+                @board[2][col].gsub('|', '').strip]
+      return column[0] if column.uniq.length == 1
+    end
+    # Check diagonals for a winner
+    diagonal1 = [@board[0][0].gsub('|', '').strip, @board[1][1].gsub('|', '').strip, @board[2][2].gsub('|', '').strip]
+    diagonal2 = [@board[0][2].gsub('|', '').strip, @board[1][1].gsub('|', '').strip, @board[2][0].gsub('|', '').strip]
+
+    return diagonal1[0] if diagonal1.uniq.length == 1
+    return diagonal2[0] if diagonal2.uniq.length == 1
+
+    # No winner found
+    nil
+  end
 end

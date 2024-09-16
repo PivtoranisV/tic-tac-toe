@@ -23,3 +23,4 @@ b.display_board
 b.update_board('0', '9')
 b.display_board
 p b.tie_game?
+p b.check_winner
