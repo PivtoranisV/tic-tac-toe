@@ -21,6 +21,7 @@ Welcome to the **Tic-Tac-Toe** game! This is a command-line implementation of th
 1. Clone the repository:
 
 2. Run the game:
+
    ```bash
    ruby main.rb
    ```
@@ -45,7 +46,7 @@ Welcome to the **Tic-Tac-Toe** game! This is a command-line implementation of th
 - **Ruby**: The game logic is written in Ruby.
 - **Colorize Gem**: Used to add color to the game messages and board.
 
-### Class Breakdown:
+### Class Breakdown
 
 - **Game**: Manages the flow of the game, including initializing players, controlling turns, and checking the game state.
 - **Board**: Responsible for rendering the board, updating it with player moves, and checking for winning conditions.
